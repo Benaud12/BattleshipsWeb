@@ -8,9 +8,8 @@ class BattleshipsWeb < Sinatra::Base
     erb :index
   end
 
-  get '/askname' do
-    'What is your name?'
-    erb :index
+  get '/New_Game' do
+    erb :new_game
   end
 
   # start the server if ruby file executed directly
