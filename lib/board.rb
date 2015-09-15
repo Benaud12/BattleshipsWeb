@@ -9,6 +9,7 @@ class Board
     cell = options.fetch(:cell)
     @number_of_pieces = options.fetch(:number_of_pieces, DEFAULT_NUMBER_OF_PIECES)
     @grid = create_grid(size, cell)
+
   end
 
   def create_grid size, cell
@@ -18,6 +19,34 @@ class Board
       end
     end.flatten.reduce(:merge)
   end
+
+  def htmlprinter
+    string = ''
+    ("A".."J").map do |letter|
+      (1..10).map do |number|
+        "#{letter}#{number}"
+      end
+    end.each do |a|
+      string << "<div> #{a.join(' | ')} </div>"
+    end
+    string
+  end
+
+  def show
+		output = "<table><tr>"
+		x = 0
+		@grid.each do |cell|
+			if x % 10 == 0
+				output += "</tr><tr>"
+				output += "<th> #{cell} </th>"
+				x += 1
+			else
+				output += "<th> #{cell} </th>"
+				x += 1
+			end
+		end
+		output += "</table>"
+	end
 
   def dimension_size size
     Math.sqrt(size).floor
