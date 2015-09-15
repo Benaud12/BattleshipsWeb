@@ -38,10 +38,10 @@ class Board
 		@grid.each do |cell|
 			if x % 10 == 0
 				output += "</tr><tr>"
-				output += "<th> #{cell} </th>"
+				output += "<td> <a href='/grid'>#{cell[0]}</a> </td>"
 				x += 1
 			else
-				output += "<th> #{cell} </th>"
+				output += "<td> <a href='/grid'>#{cell[0]}</a> </td>"
 				x += 1
 			end
 		end
